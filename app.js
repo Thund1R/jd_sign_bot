@@ -48,14 +48,9 @@ async function sendNotify (title,content) {
         'token':serverJ,
         'title':title, 
         'content':content},
-    json: true,
-    method: 'POST'
   }
-  await rp.post(options).then(res=>{
-    console.log(res)
-  }).catch((err)=>{
-    console.log(err)
-  })
+  await const res = http.post(options)
+  console.log(res)
 }
 
 async function start() {
