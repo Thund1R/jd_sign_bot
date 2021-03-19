@@ -6,6 +6,7 @@ const exec = require('child_process').execSync;
 const fs = require('fs');
 const rp = require('request-promise');
 const download = require('download');
+const axios = require('axios');
 
 // 公共变量
 const KEY = process.env.JD_COOKIE;
@@ -42,14 +43,13 @@ async function changeFiele () {
 //   })
 // }
 async function sendNotify (title,content) {
-  const options ={
-    uri:  `http://www.pushplus.plus/send`,
-    form: { 
+  const url = `http://www.pushplus.plus/send`,
+  const form = { 
         'token':serverJ,
         'title':title, 
         'content':content},
   }
-  await const res = http.post(options)
+  const res = await axios.post(url,form)
   console.log(res)
 }
 
