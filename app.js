@@ -6,7 +6,6 @@ const exec = require('child_process').execSync;
 const fs = require('fs');
 const rp = require('request-promise');
 const download = require('download');
-const axios = require('axios');
 
 // 公共变量
 const KEY = process.env.JD_COOKIE;
@@ -29,28 +28,18 @@ async function changeFiele () {
    await fs.writeFileSync( './JD_DailyBonus.js', content, 'utf8')
 }
 
-// async function sendNotify (title,desp) {
-//   const options ={
-//     uri:  `https://sctapi.ftqq.com/${serverJ}.send`,
-//     form: { title, desp },
-//     json: true,
-//     method: 'POST'
-//   }
-//   await rp.post(options).then(res=>{
-//     console.log(res)
-//   }).catch((err)=>{
-//     console.log(err)
-//   })
-// }
-async function sendNotify (title,content) {
-  const url = `http://www.pushplus.plus/send`,
-  const form = { 
-        'token':serverJ,
-        'title':title, 
-        'content':content},
+async function sendNotify (text,desp) {
+  const options ={
+    uri:  `https://sc.ftqq.com/${serverJ}.send`,
+    form: { text, desp },
+    json: true,
+    method: 'POST'
   }
-  const res = await axios.post(url,form)
-  console.log(res)
+  await rp.post(options).then(res=>{
+    console.log(res)
+  }).catch((err)=>{
+    console.log(err)
+  })
 }
 
 async function start() {
