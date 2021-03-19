@@ -29,17 +29,7 @@ async function changeFiele () {
 }
 
 async function sendNotify (text,desp) {
-  const options ={
-    uri:  `https://sc.ftqq.com/${serverJ}.send`,
-    form: { text, desp },
-    json: true,
-    method: 'POST'
-  }
-  await rp.post(options).then(res=>{
-    console.log(res)
-  }).catch((err)=>{
-    console.log(err)
-  })
+ console.log(text)
 }
 
 async function start() {
