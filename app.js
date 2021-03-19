@@ -28,10 +28,26 @@ async function changeFiele () {
    await fs.writeFileSync( './JD_DailyBonus.js', content, 'utf8')
 }
 
-async function sendNotify (title,desp) {
+// async function sendNotify (title,desp) {
+//   const options ={
+//     uri:  `https://sctapi.ftqq.com/${serverJ}.send`,
+//     form: { title, desp },
+//     json: true,
+//     method: 'POST'
+//   }
+//   await rp.post(options).then(res=>{
+//     console.log(res)
+//   }).catch((err)=>{
+//     console.log(err)
+//   })
+// }
+async function sendNotify (title,content) {
   const options ={
-    uri:  `https://sctapi.ftqq.com/${serverJ}.send`,
-    form: { title, desp },
+    uri:  `http://www.pushplus.plus/send`,
+    form: { 
+        'token':serverJ,
+        'title':title, 
+        'content':content},
     json: true,
     method: 'POST'
   }
